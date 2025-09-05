@@ -2,8 +2,11 @@ const express = require("express");
 const User = require("../models/User.js");
 const router = express.Router();
 const bcrypt = require("bcrypt");
+const axios = require("axios");
 
 const saltRounds = 10;
+const api_key =
+  process.env.OMDB_API_KEY || process.env.API_KEY || "your_omdb_api_key_here";
 
 router.post("/login", async (req, res) => {
   //req.body = {email  , password}
@@ -51,6 +54,47 @@ router.post("/register", async (req, res) => {
     return res
       .status(500)
       .json({ success: false, message: "Error creating user" });
+  }
+});
+
+router.get("/search", async (req, res) => {
+  try {
+    const searchTerm = req.query.title;
+    console.log("Search request received for:", searchTerm);
+    console.log("API Key available:", api_key ? "Yes" : "No");
+
+    if (!searchTerm || searchTerm.trim() === "") {
+      return res.status(400).json({
+        success: false,
+        error: "No search term provided",
+      });
+    }
+
+    const omdbUrl = `https://www.omdbapi.com/?apikey=${api_key}&s=${searchTerm}`;
+    console.log("Making request to OMDB:", omdbUrl);
+
+    const response = await axios.get(omdbUrl);
+    console.log("OMDB Response:", response.data);
+
+    if (response.data.Response === "False") {
+      return res.status(200).json({
+        success: true,
+        data: [],
+        message: response.data.Error || "No movies found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: response.data.Search || [],
+    });
+  } catch (err) {
+    console.error("Search error:", err.message);
+    console.error("Full error:", err);
+    return res.status(500).json({
+      success: false,
+      error: "Something went wrong while fetching search results",
+    });
   }
 });
 
