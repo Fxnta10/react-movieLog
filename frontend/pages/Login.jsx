@@ -1,29 +1,33 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useAuth } from "../src/hooks/useAuth";
 
 export default function Login() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError("");
 
     try {
-      const response = await axios.post("/api/login", {
-        email,
-        password,
-      });
-      if (!response.data.success) {
-        setError("Login with valid credentials");
-      } else {
+      const result = await login(email, password);
+      
+      if (result.success) {
         navigate("/dashboard");
+      } else {
+        setError(result.message || "Login failed");
       }
     } catch (err) {
       console.error("Error:", err);
       setError("Something went wrong");
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -52,7 +56,9 @@ export default function Login() {
           />
         </div>
         <br />
-        <button type="submit">Login</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
+        </button>
       </form>
 
       <div>

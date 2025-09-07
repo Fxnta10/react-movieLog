@@ -80,3 +80,14 @@
   color: #666;
   font-size: 12px;
 }
+
+/* Movie Links */
+.search-results-container a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.search-results-container a:hover .movie-tile {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}

@@ -1,31 +1,34 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useAuth } from "../src/hooks/useAuth";
 
 export default function Register() {
   const [username, setUsername] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
   const navigate = useNavigate();
+  const { register } = useAuth();
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError("");
 
     try {
-      const res = await axios.post("/api/register", {
-        email,
-        username,
-        password,
-      });
-      if (res.data.success) {
+      const result = await register(username, email, password);
+      
+      if (result.success) {
         navigate("/login");
       } else {
-        setError("Something went wrong...");
+        setError(result.message || "Registration failed");
       }
     } catch (error) {
       console.error("Registration error:", error);
       setError("Failed to register. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -63,7 +66,9 @@ export default function Register() {
               required
             />
           </div>
-          <button type="submit">Register</button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Registering..." : "Register"}
+          </button>
         </form>
 
         <div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, Link } from "react-router-dom";
 
 export default function SearchResult() {
   const location = useLocation();
@@ -23,11 +23,13 @@ export default function SearchResult() {
         : "https://via.placeholder.com/300x450.png?text=No+Poster+Available";
 
     return (
-      <div key={movie.imdbID} className="movie-tile">
-        <img src={posterSrc} alt={movie.Title} />
-        <h4>{movie.Title}</h4>
-        <p>Year: {movie.Year}</p>
-      </div>
+      <Link to={`/${movie.imdbID}`} key={movie.imdbID}>
+        <div className="movie-tile">
+          <img src={posterSrc} alt={movie.Title} />
+          <h4>{movie.Title}</h4>
+          <p>Year: {movie.Year}</p>
+        </div>
+      </Link>
     );
   });
 
