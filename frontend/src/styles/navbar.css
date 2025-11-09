@@ -98,20 +98,44 @@
   gap: var(--space-md);
 }
 
+/* Search bar inside navbar */
 .navbar-search {
   position: relative;
-  width: 300px;
+  display: flex;
+  align-items: center;
+  /* allow it to grow a bit but cap max width for balance */
+  flex: 1 1 340px;
+  max-width: 520px;
+  margin: 0 var(--space-lg);
 }
 
-.navbar-search .input {
+/* Override page-level search container spacing when used in navbar */
+.navbar-search .search-container {
+  width: 100%;
+  max-width: none;
+  margin: 0; /* cancel 0 auto X margins from search.css */
+}
+
+/* Compact the input and button to align with navbar height */
+.navbar-search .search-input {
+  padding: var(--space-sm) var(--space-lg);
   padding-right: 3rem;
   background-color: var(--tertiary-bg);
   border: 1px solid var(--border-muted);
+  border-radius: var(--radius-medium);
+  box-shadow: none;
 }
 
 .navbar-search .input:focus {
   border-color: var(--accent-primary);
   box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+}
+
+/* Size the search button to match the compact input */
+.navbar-search .search-button {
+  width: 40px;
+  height: 40px;
+  right: var(--space-sm);
 }
 
 .navbar-search-icon {
@@ -248,7 +272,9 @@
 
 @media (max-width: 1024px) {
   .navbar-search {
-    width: 250px;
+    flex-basis: 280px;
+    max-width: 420px;
+    margin: 0 var(--space-md);
   }
 }
 

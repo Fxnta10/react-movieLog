@@ -56,7 +56,16 @@ router.post("/login", async (req, res) => {
 router.post("/register", async (req, res) => {
   //req.body={email,username,password}
   try {
-    const salt = bcrypt.genGenSync(saltRounds);
+    // Prevent duplicate registrations
+    const existing = await User.findOne({ email: req.body.email });
+    if (existing) {
+      return res
+        .status(409)
+        .json({ success: false, message: "Email already registered" });
+    }
+
+    // generate salt and hash password
+    const salt = bcrypt.genSaltSync(saltRounds);
     const hashPassword = bcrypt.hashSync(req.body.password, salt);
     const newUser = new User({
       username: req.body.username,

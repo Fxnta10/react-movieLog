@@ -198,7 +198,7 @@ export default function Dashboard() {
               <Link
                 to={`/${movie.imdbID}`}
                 key={movie.imdbID}
-                className="movie-card hover-lift"
+                className="movie-card compact hover-lift"
               >
                 <div className="movie-card-image">
                   <img
@@ -258,7 +258,7 @@ export default function Dashboard() {
               <Link
                 to={`/${movie.imdbID}`}
                 key={movie.imdbID}
-                className="movie-card hover-lift"
+                className="movie-card compact hover-lift"
               >
                 <div className="movie-card-image">
                   <img
@@ -318,7 +318,7 @@ export default function Dashboard() {
               <Link
                 to={`/${movie.imdbID}`}
                 key={movie.imdbID || movie._id}
-                className="movie-card hover-lift"
+                className="movie-card compact hover-lift"
               >
                 <div className="movie-card-image">
                   <img

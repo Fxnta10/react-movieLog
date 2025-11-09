@@ -2,7 +2,7 @@
 .dashboard {
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--space-2xl);
+  padding: var(--space-xl);
 }
 
 .dashboard-header {
@@ -125,15 +125,15 @@
 
 /* Dashboard Sections */
 .dashboard-section {
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
 }
 
 .section-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--space-xl);
-  padding-bottom: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
   border-bottom: 1px solid var(--border-muted);
 }
 
@@ -181,20 +181,20 @@
 /* Movie Lists */
 .movie-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: var(--space-xl);
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-lg);
 }
 
 .movie-list.horizontal {
   display: flex;
-  gap: var(--space-xl);
+  gap: var(--space-md);
   overflow-x: auto;
   padding-bottom: var(--space-md);
   scroll-snap-type: x mandatory;
 }
 
 .movie-list.horizontal .movie-card {
-  min-width: 200px;
+  min-width: 160px;
   scroll-snap-align: start;
 }
 
