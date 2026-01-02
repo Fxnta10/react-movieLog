@@ -39,8 +39,8 @@ export default function Login() {
           {/* Auth Header */}
           <div className="auth-header">
             <div className="auth-logo">
-              <div className="logo-icon">🎬</div>
-              <h1 className="logo-text">MovieLog</h1>
+              <div className="logo-icon"></div>
+              <h1 className="logo-text">CineLog</h1>
             </div>
             <div className="auth-title-section">
               <h2 className="auth-title">Welcome Back</h2>
@@ -54,7 +54,7 @@ export default function Login() {
           <div className="auth-form-container">
             {error && (
               <div className="alert alert-error">
-                <div className="alert-icon">⚠️</div>
+                <div className="alert-icon"></div>
                 <div className="alert-content">
                   <div className="alert-title">Login Failed</div>
                   <div className="alert-message">{error}</div>
@@ -186,7 +186,7 @@ export default function Login() {
             {/* Auth Footer */}
             <div className="auth-footer">
               <div className="auth-divider">
-                <span>New to MovieLog?</span>
+                <span>New to CineLog?</span>
               </div>
               <Link to="/register" className="btn btn-secondary btn-full">
                 <svg

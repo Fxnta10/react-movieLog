@@ -95,7 +95,7 @@ export default function Watchlist() {
   if (error) {
     return (
       <div className="search-empty">
-        <div className="search-empty-icon">⚠️</div>
+        <div className="search-empty-icon"></div>
         <div className="search-empty-title">Error loading watchlist</div>
         <div className="search-empty-subtitle">
           {error.message || "Something went wrong."}
@@ -121,7 +121,7 @@ export default function Watchlist() {
           </p>
         </div>
         <div className="search-empty">
-          <div className="search-empty-icon">📌</div>
+          <div className="search-empty-icon"></div>
           <div className="search-empty-title">Nothing saved</div>
           <div className="search-empty-subtitle">
             Browse or search for movies and add them to your watchlist.

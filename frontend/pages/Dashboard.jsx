@@ -88,7 +88,7 @@ export default function Dashboard() {
   if (error) {
     return (
       <div className="error-container">
-        <div className="error-icon">⚠️</div>
+        <div className="error-icon"></div>
         <div className="error-content">
           <div className="error-title">Something went wrong</div>
           <div className="error-message">
@@ -129,13 +129,13 @@ export default function Dashboard() {
       <div className="dashboard-stats">
         <div className="stat-card watched">
           <div className="stat-header">
-            <div className="stat-icon">🎬</div>
+            <div className="stat-icon"></div>
             <div className="stat-number">{totalWatched}</div>
           </div>
           <div className="stat-label">Movies Watched</div>
           {totalWatched > 0 && (
             <div className="stat-change positive">
-              <span>📈</span>
+              <span></span>
               Keep watching!
             </div>
           )}
@@ -143,13 +143,13 @@ export default function Dashboard() {
 
         <div className="stat-card watchlist">
           <div className="stat-header">
-            <div className="stat-icon">📌</div>
+            <div className="stat-icon"></div>
             <div className="stat-number">{totalWatchlist}</div>
           </div>
           <div className="stat-label">In Watchlist</div>
           {totalWatchlist > 0 && (
             <div className="stat-change">
-              <span>💾</span>
+              <span></span>
               Ready to watch
             </div>
           )}
@@ -157,13 +157,13 @@ export default function Dashboard() {
 
         <div className="stat-card currently-watching">
           <div className="stat-header">
-            <div className="stat-icon">▶️</div>
+            <div className="stat-icon"></div>
             <div className="stat-number">{totalCurrentlyWatching}</div>
           </div>
           <div className="stat-label">Currently Watching</div>
           {totalCurrentlyWatching > 0 && (
             <div className="stat-change">
-              <span>🍿</span>
+              <span></span>
               In progress
             </div>
           )}
@@ -175,7 +175,7 @@ export default function Dashboard() {
         <div className="dashboard-section">
           <div className="section-header">
             <h2 className="section-title">
-              <div className="section-icon">▶️</div>
+              <div className="section-icon watching"></div>
               Continue Watching
             </h2>
             <Link to="/watchlist" className="view-all-btn">
@@ -214,7 +214,7 @@ export default function Dashboard() {
                   />
                   <div className="movie-card-overlay">
                     <div className="movie-card-rating">
-                      ⭐ {movie.imdbRating || "N/A"}
+                      {movie.imdbRating || "N/A"}
                     </div>
                   </div>
                 </div>
@@ -235,7 +235,7 @@ export default function Dashboard() {
         <div className="dashboard-section">
           <div className="section-header">
             <h2 className="section-title">
-              <div className="section-icon">📌</div>
+              <div className="section-icon watchlist"></div>
               Your Watchlist
             </h2>
             <Link to="/watchlist" className="view-all-btn">
@@ -274,7 +274,7 @@ export default function Dashboard() {
                   />
                   <div className="movie-card-overlay">
                     <div className="movie-card-rating">
-                      ⭐ {movie.imdbRating || "N/A"}
+                      {movie.imdbRating || "N/A"}
                     </div>
                   </div>
                 </div>
@@ -295,7 +295,7 @@ export default function Dashboard() {
         <div className="dashboard-section">
           <div className="section-header">
             <h2 className="section-title">
-              <div className="section-icon">🎬</div>
+              <div className="section-icon watched"></div>
               Recently Watched
             </h2>
             <Link to="/watchlist" className="view-all-btn">
@@ -334,7 +334,7 @@ export default function Dashboard() {
                   />
                   <div className="movie-card-overlay">
                     <div className="movie-card-rating">
-                      ⭐ {movie.imdbRating || "N/A"}
+                      {movie.imdbRating || "N/A"}
                     </div>
                   </div>
                 </div>
@@ -355,7 +355,7 @@ export default function Dashboard() {
         totalWatchlist === 0 &&
         totalCurrentlyWatching === 0 && (
           <div className="empty-state">
-            <div className="empty-state-icon">🎬</div>
+            <div className="empty-state-icon"></div>
             <div className="empty-state-title">Welcome to MovieLog!</div>
             <div className="empty-state-subtitle">
               Start by searching for movies and building your watchlist

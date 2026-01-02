@@ -55,7 +55,7 @@ export default function Register() {
           {/* Auth Header */}
           <div className="auth-header">
             <div className="auth-logo">
-              <div className="logo-icon">🎬</div>
+              <div className="logo-icon"></div>
               <h1 className="logo-text">MovieLog</h1>
             </div>
             <div className="auth-title-section">
@@ -70,7 +70,7 @@ export default function Register() {
           <div className="auth-form-container">
             {error && (
               <div className="alert alert-error">
-                <div className="alert-icon">⚠️</div>
+                <div className="alert-icon"></div>
                 <div className="alert-content">
                   <div className="alert-title">Registration Failed</div>
                   <div className="alert-message">{error}</div>

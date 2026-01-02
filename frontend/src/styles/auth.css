@@ -488,13 +488,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--text-3xl);
-  font-weight: 600;
+  position: relative;
   background: linear-gradient(135deg, #1b2735 0%, #243447 60%, #1b2735 100%), var(--gradient-primary);
   background-blend-mode: overlay;
   color: var(--text-inverse);
   border: 1px solid rgba(255,255,255,0.08);
   box-shadow: 0 4px 18px -4px rgba(0,0,0,0.6), 0 0 0 1px rgba(88,166,255,0.25) inset;
+}
+
+.logo-icon::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 22px solid white;
+  margin-left: 8px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
 
 .logo-text {

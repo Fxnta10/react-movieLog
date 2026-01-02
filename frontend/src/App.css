@@ -248,8 +248,22 @@
 }
 
 .error-icon {
-  font-size: var(--text-xl);
+  width: 24px;
+  height: 24px;
+  background: var(--accent-secondary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   flex-shrink: 0;
+}
+
+.error-icon::before {
+  content: "!";
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .error-content {

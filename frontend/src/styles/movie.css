@@ -72,7 +72,15 @@
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 6px;
+}
+
+.movie-card-rating::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: var(--accent-warning);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
 
 .movie-card-year {
@@ -390,9 +398,41 @@
 }
 
 .watch-status-icon {
-  font-size: var(--text-2xl);
+  width: 40px;
+  height: 40px;
+  background: var(--tertiary-bg);
+  border-radius: var(--radius-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: var(--space-md);
-  display: block;
+  position: relative;
+}
+
+.watch-status-card.watchlist .watch-status-icon::before {
+  content: "";
+  width: 14px;
+  height: 20px;
+  background: var(--text-secondary);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 80%, 0% 100%);
+}
+
+.watch-status-card.watchlist.active .watch-status-icon::before {
+  background: var(--accent-secondary);
+}
+
+.watch-status-card.watching .watch-status-icon::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid var(--text-secondary);
+  margin-left: 4px;
+}
+
+.watch-status-card.watching.active .watch-status-icon::before {
+  border-left-color: var(--accent-warning);
 }
 
 .watch-status-title {
@@ -448,15 +488,18 @@
 }
 
 .rating-star {
-  font-size: var(--text-xl);
-  color: var(--text-muted);
+  width: 24px;
+  height: 24px;
+  background: var(--text-muted);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
   cursor: pointer;
-  transition: color var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .rating-star.filled,
 .rating-star:hover {
-  color: var(--accent-warning);
+  background: var(--accent-warning);
+  transform: scale(1.1);
 }
 
 .rating-number {
@@ -521,10 +564,40 @@
   border-color: var(--accent-primary);
 }
 
+.like-button span {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  display: inline-block;
+}
+
+.like-button span::before,
+.like-button span::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 16px;
+  border-radius: 10px 10px 0 0;
+  background: currentColor;
+}
+
+.like-button span::before {
+  left: 9px;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.like-button span::after {
+  left: -1px;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
 .like-button.liked {
-  background: var(--accent-secondary);
-  color: var(--text-primary);
-  border-color: var(--accent-secondary);
+  background: rgba(248, 81, 73, 0.1);
+  color: #f85149;
+  border-color: #f85149;
 }
 
 /* Responsive Design */

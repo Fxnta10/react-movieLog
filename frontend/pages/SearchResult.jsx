@@ -20,7 +20,7 @@ export default function SearchResult() {
         </div>
 
         <div className="search-empty">
-          <div className="search-empty-icon">🔍</div>
+          <div className="search-empty-icon"></div>
           <div className="search-empty-title">We couldn’t find anything</div>
           <div className="search-empty-subtitle">
             Use the search bar above to look for another movie title.

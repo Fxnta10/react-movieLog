@@ -44,10 +44,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--text-lg);
-  font-weight: bold;
-  color: var(--text-inverse);
+  position: relative;
   box-shadow: var(--shadow-small);
+}
+
+.navbar-logo::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid var(--text-inverse);
+  margin-left: 4px;
 }
 
 .navbar-nav {

@@ -196,9 +196,33 @@
 }
 
 .search-empty-icon {
-  font-size: 4rem;
-  margin-bottom: var(--space-lg);
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-lg);
+  position: relative;
   opacity: 0.5;
+}
+
+.search-empty-icon::before {
+  content: "";
+  width: 32px;
+  height: 32px;
+  border: 4px solid var(--text-secondary);
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.search-empty-icon::after {
+  content: "";
+  width: 4px;
+  height: 24px;
+  background: var(--text-secondary);
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  transform: rotate(-45deg);
 }
 
 .search-empty-title {

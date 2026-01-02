@@ -25,7 +25,7 @@ export default function Navbar() {
       <div className="navbar-container">
         {/* Brand */}
         <Link to="/dashboard" className="navbar-brand">
-          <div className="navbar-logo">🎬</div>
+          <div className="navbar-logo"></div>
           <span>MovieLog</span>
         </Link>
 

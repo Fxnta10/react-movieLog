@@ -175,7 +175,7 @@ export default function MovieCard() {
   if (error) {
     return (
       <div className="error-container">
-        <div className="error-icon">⚠️</div>
+        <div className="error-icon"></div>
         <div className="error-content">
           <div className="error-title">Something went wrong</div>
           <div className="error-message">
@@ -226,7 +226,7 @@ export default function MovieCard() {
             <div className="movie-meta-item">
               <div className="movie-meta-label">IMDb Rating</div>
               <div className="movie-meta-value">
-                ⭐ {movieData.imdbRating || "N/A"}
+                {movieData.imdbRating || "N/A"}
               </div>
             </div>
             <div className="movie-meta-item">
@@ -284,7 +284,7 @@ export default function MovieCard() {
           }`}
           onClick={handleWatchlistAdd}
         >
-          <div className="watch-status-icon">{isInWatchlist ? "💾" : "📌"}</div>
+          <div className="watch-status-icon"></div>
           <div className="watch-status-title">
             {isInWatchlist ? "In Watchlist" : "Add to Watchlist"}
           </div>
@@ -301,9 +301,7 @@ export default function MovieCard() {
           }`}
           onClick={handleCurrentlyWatchingAdd}
         >
-          <div className="watch-status-icon">
-            {isCurrentlyWatching ? "🎬" : "▶️"}
-          </div>
+          <div className="watch-status-icon"></div>
           <div className="watch-status-title">
             {isCurrentlyWatching ? "Currently Watching" : "Mark as Watching"}
           </div>
@@ -359,9 +357,7 @@ export default function MovieCard() {
                       userRating >= star * 2 ? "filled" : ""
                     }`}
                     onClick={() => handleRatingChange(star * 2)}
-                  >
-                    ⭐
-                  </span>
+                  ></span>
                 ))}
               </div>
               {autoSaving && (
@@ -378,7 +374,7 @@ export default function MovieCard() {
                 className={`like-button ${userLiked ? "liked" : ""}`}
                 onClick={() => setUserLiked(!userLiked)}
               >
-                <span>{userLiked ? "❤️" : "♡"}</span>
+                <span>{userLiked ? "" : "♡"}</span>
                 {userLiked ? "You liked this movie" : "Mark as liked"}
               </button>
             </div>
@@ -433,7 +429,7 @@ export default function MovieCard() {
             {userRating && (
               <div className="rating-display mb-lg">
                 <span className="rating-label">Your Rating:</span>
-                <span className="rating-value">⭐ {userRating}/10</span>
+                <span className="rating-value">{userRating}/10</span>
               </div>
             )}
 
@@ -443,7 +439,7 @@ export default function MovieCard() {
                 className={`like-button ${userLiked ? "liked" : ""}`}
                 onClick={() => handleLikedToggle(!userLiked)}
               >
-                <span>{userLiked ? "❤️" : "♡"}</span>
+                <span>{userLiked ? "" : "♡"}</span>
                 {userLiked ? "You liked this movie" : "Mark as liked"}
               </button>
             </div>
@@ -460,7 +456,7 @@ export default function MovieCard() {
               </div>
             ) : (
               <div className="empty-state">
-                <div className="empty-state-icon">📝</div>
+                <div className="empty-state-icon"></div>
                 <div className="empty-state-title">No review yet</div>
                 <div className="empty-state-subtitle">
                   Share your thoughts about this movie
