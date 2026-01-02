@@ -24,9 +24,9 @@ app.use("/api", loginRouter);
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
 // After defining your routes, anything that doesn't match a route should be sent to the frontend
-app.get(/^(?!\/api).+/, (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
-});
+// app.get(/^(?!\/api).*/, (req, res) => {
+//   res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
+// });
 
 // Detailed connection logging
 console.log("MongoDB URL defined:", !!mongoDBURL);
@@ -49,19 +49,8 @@ const connectDB = async () => {
       console.log(`✓ App is listening to port: ${port}`);
     });
   } catch (error) {
-    console.error("✗ MongoDB Connection Error:");
-    console.error("Error message:", error.message);
-    console.error("Error code:", error.code);
-    console.error("Full error:", error);
-    console.error("\nTroubleshooting tips:");
-    console.error("1. Check if MONGODB_URL is correct in backend/.env");
-    console.error("2. Ensure MongoDB database name is included in URL");
-    console.error("3. Check MongoDB Atlas IP whitelist includes your machine");
-    console.error(
-      "4. Verify username/password in connection string are correct"
-    );
-
-    // Retry after 5 seconds
+    console.error("MongoDB Connection Error:");
+    // Retry after5 seconds
     console.log("\nRetrying in 5 seconds...");
     setTimeout(connectDB, 5000);
   }
