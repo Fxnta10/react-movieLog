@@ -24,7 +24,7 @@ app.use("/api", loginRouter);
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
 // After defining your routes, anything that doesn't match a route should be sent to the frontend
-app.get("(.*)", (req, res) => {
+app.get(/^(?!\/api).+/, (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
 });
 
