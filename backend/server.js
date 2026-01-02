@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
 
 dotenv.config();
 
@@ -19,9 +20,12 @@ app.use(cors());
 app.use("/api", loginRouter);
 // app.use("/api", userRouter);
 
-app.get("/", (request, response) => {
-  console.log(request);
-  return response.status(234).send("Testing Routes ");
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+// After defining your routes, anything that doesn't match a route should be sent to the frontend
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
 });
 
 // Detailed connection logging

@@ -1,0 +1,13 @@
+{
+  "name": "movielog-root",
+  "version": "1.0.0",
+  "scripts": {
+    "install-all": "npm install",
+    "build": "npm run build",
+    "start": "npm start",
+    "dev": "concurrently \"npm run dev\" \"npm run dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
