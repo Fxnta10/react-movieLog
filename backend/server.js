@@ -21,12 +21,27 @@ app.use("/api", loginRouter);
 // app.use("/api", userRouter);
 
 // Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
+const frontendPath = path.resolve(__dirname, "../frontend/dist");
+console.log("Serving static files from:", frontendPath);
+app.use(express.static(frontendPath));
 
 // After defining your routes, anything that doesn't match a route should be sent to the frontend
-// app.get(/^(?!\/api).*/, (req, res) => {
-//   res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
-// });
+app.use((req, res, next) => {
+  if (req.path.startsWith("/api")) {
+    return next();
+  }
+  const indexPath = path.join(frontendPath, "index.html");
+  res.sendFile(indexPath, (err) => {
+    if (err) {
+      console.error("Error sending index.html:", err);
+      res
+        .status(500)
+        .send(
+          "Error loading frontend. Make sure you have run 'npm run build' in the frontend directory."
+        );
+    }
+  });
+});
 
 // Detailed connection logging
 console.log("MongoDB URL defined:", !!mongoDBURL);
